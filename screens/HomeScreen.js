@@ -12,6 +12,8 @@ import {
     View,
     Dimensions,
 } from 'react-native';
+import Swiper from 'react-native-swiper';
+import {Icon, LinearGradient} from "expo";
 
 import img1 from '../assets/images/art1.jpg';
 import img2 from '../assets/images/art2.jpg';
@@ -22,10 +24,6 @@ import diy from '../assets/images/diy.jpg';
 import ceramic from '../assets/images/ceramic.jpg'
 
 const catDat = [{cat: "Ink", img: ink},{cat: "Acrylic", img: acrylic},{cat: "Ceramic", img: ceramic},{cat: "DIY Gift", img: diy},{cat: "Water Color", img: water},{cat: "Famous", img: img1}];
-
-import Swiper from 'react-native-swiper';
-
-import {Icon, LinearGradient} from "expo";
 
 const dim = Dimensions.get("window");
 const DeviceWidth = dim.width;
@@ -39,14 +37,16 @@ class CategoryItem extends  React.Component {
     render() {
         return (
             <TouchableOpacity style={{width: (this.props.index+1)%3===0?"95%":"46%"}}>
-                <ImageBackground source={this.props.item.img}
-                                 style={{width: "100%",
-                                 marginBottom: 10}}
-                                 resizeMode='cover'>
-                    <View style={{justifyContent: 'center',height: 150, alignItems: 'center'}}>
-                        <Text style={{textAlign: "center", color: 'white'} }>{this.props.item.cat}</Text>
-                    </View>
-                </ImageBackground>
+                    <ImageBackground source={this.props.item.img}
+                                     style={{width: "100%",
+                                         marginBottom: 10}}
+                                     resizeMode='cover'>
+                        <LinearGradient colors={['rgba(0,0,0,0.3)', 'rgba(0,0,0,0.4)']}>
+                            <View style={{justifyContent: 'center',height: 150, alignItems: 'center'}}>
+                                <Text style={{textAlign: "center", color: 'white'} }>{this.props.item.cat}</Text>
+                            </View>
+                        </LinearGradient>
+                    </ImageBackground>
             </TouchableOpacity>
         )
 
@@ -78,7 +78,7 @@ export default class HomeScreen extends React.Component {
 
     render() {
         return (
-            <ScrollView style={styles.container} contentContainerStyle={{height: "100%"}}>
+            <View style={styles.container}>
                 <View style={styles.wrapper}>
                     <Swiper activeDotColor="#fff">
                         <View style={styles.slide}>
@@ -98,7 +98,7 @@ export default class HomeScreen extends React.Component {
                     numColumns={3}
                     keyExtractor={(item, index) => index}
                 />
-            </ScrollView>
+            </View>
 
         );
     }
