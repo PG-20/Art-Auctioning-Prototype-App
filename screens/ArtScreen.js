@@ -60,8 +60,8 @@ export class ArtItem extends React.Component {
                         />
                     </TouchableOpacity>
                 </ImageBackground>
-                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <View style={{marginLeft: 10, width: "70%"}}>
+                <View style={{flexDirection: 'row', justifyContent: 'space-between', width: "95%", alignSelf: 'center'}}>
+                    <View style={{width: "70%"}}>
                         <Text style={styles.name}>{this.props.item.name}</Text>
                         <Text style={styles.desc}>{this.props.item.desc}</Text>
                         <View style={this.props.details?{display: 'none'}:styles.inline}>
@@ -73,7 +73,7 @@ export class ArtItem extends React.Component {
                             <Text style={styles.interested}>{this.props.item.interested} people are also watching</Text>
                         </View>
                     </View>
-                    <View style={{marginRight: 10}}>
+                    <View>
                         <Text style={styles.price}>{this.props.item.price}</Text>
                         <Text style={this.props.details?{display: 'none'}:styles.bids}>{this.props.item.bids} bids</Text>
                     </View>
